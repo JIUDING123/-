@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>new_vue_learning</title>
+    <style>
+        .active{
+            color:red;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{ message }}
+        <div v-html="htmlSample"></div>
+        <input type="text" v-model="value">
+        <div>{{value}}</div>
+        <a v-bind:href="url">百度一下</a>
+        <div id='box' style="background-color:red; height:100px; width:100px" @click="changeColor"></div>
+
+
+        <div style="display:flex"; margin-top=30px>
+            <div style="padding:0 10px":class="{'active':item===currentMenu}"  v-for="item in menus":key="item">{{item}}</div>
+          </div>
+    
+      </div>
+
+      <script> 
+            var app = new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello Vue!',
+    htmlSample:'<strong>九鼎干巴勒</strong>',
+    value:'',
+    url:'https://www.baidu.com/',
+    menus:['首页','教师','学生'],
+    currentMenu:'首页'
+  },
+  methods:{
+    changeColor(){
+        document.getElementById('#box').style.backgroundColor = document.getElementById('#box').style.backgroundColor === 'blue' ? 'red' : 'blue';
+    }
+  }
+})
+      </script>
+
+
+
+
+</body>
+</html>
